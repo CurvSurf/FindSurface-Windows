@@ -78,7 +78,7 @@
 | --------------------------- | ------ | ------------------------------------------------------------ |
 | `FS_FEATURE_TYPE`           | `type` | The feature type of the resulted surface. This value could be one of `FS_TYPE_PLANE`, `FS_TYPE_SPHERE`, `FS_TYPE_CYLINDER`, `FS_TYPE_CONE` and `FS_TYPE_TORUS`. |
 | `float`                     | `rms`  | RMS error of the resulted surface. Refer to [here][RMS] for the meaning of this value. |
-| [`union`](#Union-Structure) | N/A    | An anonymous union containing various information about the resulted surface. |
+| [`union`](#Anonymous-Union) | N/A    | An anonymous union containing various information about the resulted surface. |
 
 
 
