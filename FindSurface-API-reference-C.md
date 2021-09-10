@@ -429,7 +429,7 @@ Refer to [here][PARAM] for the meanings of these parameters.
 
 ### Specializations of [`findSurface`](#findsurface)
 
-The following variations are specializations of [`findSurface`](#findsurface) function, which is designed to search for surfaces of particular feature types.
+The following variations are specializations of [`findSurface`](#findsurface) function, which is designed to search for surfaces of particular feature types. Refer to [this document](https://github.com/CurvSurf/FindSurface-Windows/blob/master/FindSurface-Tips-C.md#how-to-use-the-specializations-of-findsurface) for the usage of these variations.
 
 
 
