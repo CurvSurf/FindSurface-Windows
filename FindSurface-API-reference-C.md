@@ -518,7 +518,7 @@ The following variations are specializations of `findSurface` function, which is
     Provides an array of which elements indicate whether the corresponding points are outliers. A non-zero value means outlier. Otherwise, it means inlier. The length of the array is the same with the input point array. 
   </dd>
   <dt>Note</dt>
-  <dd>The returned array must not be modified or deallocated because the returned pointer points to an internal buffer array.</dd>
+  <dd>The returned array must not be modified or deallocated because the returned pointer points to an internal buffer array in the context.</dd>
 </dl>
 
 
