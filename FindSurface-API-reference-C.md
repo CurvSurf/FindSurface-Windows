@@ -2,9 +2,13 @@
 
 # Data Structures
 
+
+
 ## Typedefs
 
-### context
+
+
+### Context
 
 | Type                              | Name | Description                                           |
 | --------------------------------- | ---- | ----------------------------------------------------- |
@@ -13,6 +17,8 @@
 
 
 ## Enumerations
+
+
 
 ### `FS_ERROR`
 
@@ -31,7 +37,7 @@
 
 | Enum               | Value | Description                                                  |
 | ------------------ | ----- | ------------------------------------------------------------ |
-| `FS_TYPE_ANY`      | 0     | Used for input values to search one of the five types below. |
+| `FS_TYPE_ANY`      | 0     | Used for input values to search for one of the five types below. |
 | `FS_TYPE_PLANE`    | 1     | Plane                                                        |
 | `FS_TYPE_SPHERE`   | 2     | Sphere                                                       |
 | `FS_TYPE_CYLINDER` | 3     | Cylinder                                                     |
@@ -71,6 +77,8 @@
 
 
 ## Structures
+
+
 
 ### `FS_FEATURE_RESULT`
 
@@ -147,9 +155,13 @@
 
 ## Context
 
+
+
 ### `createFindSurface`
 
 <dl>
+  <dt>Signature</dt>
+  <dd><code>FS_ERROR createFindSurface(FIND_SURFACE_CONTEXT *context)</code></dd>
   <dt>Summary</dt>
   <dd>Creates the FindSurface context object and returns it into the given pointer <code>context</code>.</dd>
   <dt>Return</dt>
@@ -163,6 +175,8 @@
 ### `cleanUpFindSurface`
 
 <dl>
+  <dt>Signature</dt>
+  <dd><code>void cleanUpFindSurface(FIND_SURFACE_CONTEXT context)</code></dd>
   <dt>Summary</dt>
   <dd>Resets the <code>context</code> to the initial state.</dd>
 </dl>
@@ -172,6 +186,8 @@
 ### `releaseFindSurface`
 
 <dl>
+  <dt>Signature</dt>
+  <dd><code>void releaseFindSurface(FIND_SURFACE_CONTEXT context)</code></dd>
   <dt>Summary</dt>
   <dd>Release the FindSurface <code>context</code>.</dd>
 </dl>
@@ -180,9 +196,18 @@
 
 ## PointCloud
 
+
+
 ## `setPointCloudFloat/Double`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>FS_ERROR setPointCloudFloat(FIND_SURFACE_CONTEXT context, const void *pointer, unsigned int count, unsigned int stride)</code>
+  </dd>
+  <dd>
+    <code>FS_ERROR setPointCloudDouble(FIND_SURFACE_CONTEXT context, const void *pointer, unsigned int count, unsigned int stride)</code>
+  </dd>
   <dt>Summary</dt>
   <dd>Sets input pointcloud data through the <code>pointer</code> to the data array, <code>count</code> of the points and <code>stride</code> of the point element in the data array. <code>stride</code> can be zero if the data array contains tightly-packed xyz values. In that case, the value is considered to be 12 for `float` array or 24 for `double` array.</dd>
   <dt>Return</dt>
@@ -206,9 +231,14 @@
 ### `getPointCloudCount`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>unsigned int getPointCloudCount(FIND_SURFACE_CONTEXT context)</code>
+  </dd>
   <dt>Return</dt>
   <dd>The number of points given to the context previously.</dd>
 </dl>
+
 
 
 
@@ -216,12 +246,19 @@
 
 Refer to [here][PARAM] for the meanings of these parameters.
 
+
+
 ### setMeasurementAccuracy
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>void setMeasurementAccuracy(FIND_SURFACE_CONTEXT context, float accuracy)</code>
+  </dd>
   <dt>Summary</dt>
   <dd>Sets measurement accuracy to the given <code>accuracy</code>. The value must be non-zero positive. The default value is zero.</dd>
 </dl>
+
 
 > Note: this parameter must be set manually before invoking FindSurface's algorithm since the default value will be considered to be invalid when the algorithm begins to operate.
 
@@ -230,18 +267,28 @@ Refer to [here][PARAM] for the meanings of these parameters.
 ### `getMeasurementAccuracy`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+  	<code>float getMeasurementAccuracy(FIND_SURFACE_CONTEXT context)</code>
+  </dd>
   <dt>Return</dt>
   <dd>The measurement accuracy value that is currently set to the context.</dd>
 </dl>
 
 
 
+
 ### `setMeanDistance`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+  	<code>void setMeanDistance(FIND_SURFACE_CONTEXT context, float distance)</code>
+  </dd>
   <dt>Summary</dt>
   <dd>Sets mean distance to the given <code>distance</code>. The value must be non-zero positive. The default value is zero.</dd>
 </dl>
+
 
 > Note: this parameter must be set manually before invoking FindSurface's algorithm since the default value will be considered to be invalid when the algorithm begins to operate.
 
@@ -250,63 +297,96 @@ Refer to [here][PARAM] for the meanings of these parameters.
 ### `getMeanDistance`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>float getMeanDistance(FIND_SURFACE_CONTEXT context)</code>
+  </dd>
   <dt>Return</dt>
   <dd>The mean distance value that is currently set to the context.</dd>
 </dl>
 
 
 
+
 ### `setRadialExpansion`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>void setRadialExpansion(FIND_SURFACE_CONTEXT context, FS_SEARCH_LEVEL level)</code>
+  </dd>
   <dt>Summary</dt>
   <dd>Sets radial expasion to the given <code>level</code>. The value must be one of <code>enum FS_SEARCH_LEVEL</code> values. The default value is <code>FS_LEVEL_5</code>.</dd>
 </dl>
 
 
 
+
 ### `getRadialExpansion`
 
 <dl>
+  <dt>Signature</dt>
+  <dd><code>FS_SEARCH_LEVEL getRadialExpansion(FIND_SURFACE_CONTEXT context)</code></dd>
   <dt>Return</dt>
   <dd>The radial expansion value that is currently set to the context.</dd>
 </dl>
 
 
 
+
 ### `setLateralExtension`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>void setLateralExtension(FIND_SURFACE_CONTEXT context, FS_SEARCH_LEVEL level)</code>
+  </dd>
   <dt>Summary</dt>
   <dd>Sets lateral extension to the given <code>level</code>. The value must be one of <code>enum FS_SEARCH_LEVEL</code> values. The default value is <code>FS_LEVEL_5</code>.</dd>
 </dl>
 
 
 
+
 ### `getLateralExtension`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>FS_SEARCH_LEVEL getLateralExtension(FIND_SURFACE_CONTEXT context)</code>
+  </dd>
   <dt>Return</dt>
   <dd>The lateral extension value that is currently set to the context.</dd>
 </dl>
 
 
 
+
 ### `setSmartConversionOptions`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>void setSmartConversionOptions(FIND_SURFACE_CONTEXT context, int options)</code>
+  </dd>
   <dt>Summary</dt>
   <dd>Sets smart conversion options to the given <code>options</code>, which can be any bit-OR combinations of <code>FS_SMART_CONVERSION_OPTION</code> values. The default value is <code>FS_SCO_NONE</code>.</dd>
 </dl>
 
 
 
+
 ### `getSmartConversionOptions`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>int getSmartConversionOptions(FIND_SURFACE_CONTEXT context)</code>
+  </dd>
   <dt>Return</dt>
   <dd>The smart conversion option value that is currently set to the context.</dd>
 </dl>
+
 
 
 
@@ -317,9 +397,13 @@ Refer to [here][PARAM] for the meanings of these parameters.
 ### `findSurface`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>FS_ERROR findSurface(FIND_SURFACE_CONTEXT context, FS_FEATURE_TYPE type, unsigned int start_index, float touchRadius, FS_FEATURE_RESULT *result)</code>
+  </dd>
   <dt>Summary</dt>
   <dd>
-    Run FindSurface algorithm on the point array that have been set to <code>setPointCloudFloat/Double</code> functions. The algorithm searches a specific geometry surface represented by <code>type</code> around the point of which index is <code>start_index</code> (seed index) in the point array. <code>touchRadius</code> (seed radius) defines the initial search space and must be positive a non-zero value. The result will be written in <code>result</code>.
+    Run FindSurface algorithm on the point array that have been set to <code>setPointCloudFloat/Double</code> functions. The algorithm searches the points for a specific geometry surface represented by <code>type</code> around the point of which index is <code>start_index</code> (seed index) in the point array. <code>touchRadius</code> (seed radius) defines the initial search space and must be positive a non-zero value. The result will be written in the <code>struct FS_FEATURE_RESULT</code> pointed by <code>result</code>.
   </dd>
   <dt>Return</dt>
   <dd>An error code of <code>FS_ERROR</code> with value of <code>FS_NO_ERROR</code> indicating if succeeded to create the context. Otherwise, error codes corresponding to the reason of the failure is returned.</dd>
@@ -341,54 +425,80 @@ Refer to [here][PARAM] for the meanings of these parameters.
 
 
 
-### Speicializations of `findSurface`
 
-The following variations are specializations of `findSurface` function, which is designed to search surfaces of particular feature types.
+### Specializations of `findSurface`
+
+The following variations are specializations of `findSurface` function, which is designed to search for surfaces of particular feature types.
 
 
 
 #### `findStripPlane`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>FS_ERROR findStripPlane(FIND_SURFACE_CONTEXT context, unsigned int index_1, unsigned int index_2, float touchRadius, FS_FEATURE_RESULT *result)</code>
+  </dd>
   <dt>Summary</dt>
-  <dd>A specialization of <code>findSurface</code> function for searching a strip plane (long and narrow) using two seed points on the plane. Refer to the <code>findSurface</code> function reference for the common details.</dd>
+  <dd>A specialization of <code>findSurface</code> function to search for a strip plane (long and narrow) using two seed points (<code>index_1</code> and <code>index_2</code>) on the plane. Refer to the <code>findSurface</code> function reference for the common details.</dd>
 </dl>
+
 
 
 
 #### `findRodCylinder`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>FS_ERROR findRodCylider(FIND_SURFACE_CONTEXT context, unsigned int index_1, unsigned int index_2, float touchRadius, FS_FEATURE_RESULT *result)</code>
+  </dd>
   <dt>Summary</dt>
-  <dd>A specialization of <code>findSurface</code> function for searching a rod cylinder (long and narrow) using two seed points on the lateral surface. Refer to the <code>findSurface</code> function reference for the common details.</dd>
+  <dd>A specialization of <code>findSurface</code> function to search for a rod cylinder (long and narrow) using two seed points (<code>index_1</code> and <code>index_2</code>) on the lateral surface. Refer to the <code>findSurface</code> function reference for the common details.</dd>
 </dl>
+
 
 
 
 #### `findDiskCylinder`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>FS_ERROR findDiskCylinder(FIND_SURFACE_CONTEXT context, unsigned int index_1, unsigned int index_2, unsigned int index_3, float touchRadius, FS_FEATURE_RESULT *result)</code>
+  </dd>
   <dt>Summary</dt>
-  <dd>A specialization of <code>findSurface</code> function for searching a disk cylinder (thin and broad) using three seed points on the lateral surface. Refer to the <code>findSurface</code> function reference for the common details.</dd>
+  <dd>A specialization of <code>findSurface</code> function to search for a disk cylinder (thin and broad) using three seed points (<code>index_1</code>, <code>index_2</code> and <code>index_3</code>) on the lateral surface. Refer to the <code>findSurface</code> function reference for the common details.</dd>
 </dl>
+
 
 
 
 #### `findDiskCone`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>FS_ERROR findDiskCone(FIND_SURFACE_CONTEXT context, unsigned int index_1, unsigned int index_2, unsigned int index_3, float touchRadius, FS_FEATURE_RESULT *result)</code>
+  </dd>
   <dt>Summary</dt>
-  <dd>A specialization of <code>findSurface</code> function for searching a disk cone (thin and broad) using three seed points on the lateral surface. Refer to the <code>findSurface</code> function reference for the common details.</dd>
+  <dd>A specialization of <code>findSurface</code> function to search for a disk cone (thin and broad) using three seed points (<code>index_1</code>, <code>index_2</code> and <code>index_3</code>) on the lateral surface. Refer to the <code>findSurface</code> function reference for the common details.</dd>
 </dl>
+
 
 
 
 #### `findThinRingTorus`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>FS_ERROR findThinRingTorus(FIND_SURFACE_CONTEXT context, unsigned int index_1, unsigned int index_2, unsigned int index_3, float touchRadius, FS_FEATURE_RESULT *result)</code>
+	</dd>
   <dt>Summary</dt>
-  <dd>A specialization of <code>findSurface</code> function for searching a thin ring torus using three seed points on the surface. Refer to the <code>findSurface</code> function reference for the common details.</dd>
+  <dd>A specialization of <code>findSurface</code> function to search for a thin ring torus using three seed points (<code>index_1</code>, <code>index_2</code> and <code>index_3</code>) on the surface. Refer to the <code>findSurface</code> function reference for the common details.</dd>
 </dl>
+
 
 
 
@@ -399,6 +509,10 @@ The following variations are specializations of `findSurface` function, which is
 ### `getInOutlierFlags`
 
 <dl>
+  <dt>Signature</dt>
+  <dd>
+    <code>const unsigned char *getInOutlierFlags(FIND_SURFACE_CONTEXT context)</code>
+  </dd>
   <dt>Summary</dt>
   <dd>
     Provides an array of which elements indicate whether the corresponding points are outliers. A non-zero value means outlier. Otherwise, it means inlier. The length of the array is the same with the input point array. 
@@ -406,6 +520,7 @@ The following variations are specializations of `findSurface` function, which is
   <dt>Note</dt>
   <dd>The returned array must not be modified or deallocated because the returned pointer points to an internal buffer array.</dd>
 </dl>
+
 
 
 
