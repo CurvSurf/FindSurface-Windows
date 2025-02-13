@@ -1,4 +1,4 @@
-gh # FindSurface for Windows
+# FindSurface for Windows
 
 **Curv*Surf* FindSurface™**
 
